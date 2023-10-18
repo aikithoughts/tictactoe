@@ -31,6 +31,10 @@ function play(y){
     checkWinner(3, 6, 9);
     checkWinner(1, 5, 9);
     checkWinner(7, 5, 3);
+
+    if (moves == 9 && isGameOver == false) {
+        draw();
+    }
 }
 
 function checkWinner(a, b, c) {
@@ -79,3 +83,17 @@ function resetGame(){
     }
     playerTurn = "x";
 }
+
+function draw() {
+    let drawAlertElement = `<b>DRAW!!||</b>
+                            <br>
+                            <br>
+                            ${restartButton}`
+    let div = document.createElement("div");
+    div.className = "alert";
+    div.innerHTML = drawAlertElement;
+    document.getElementsByTagName("body")[0].appendChild(div);
+    isGameOver = true;
+    moves = 0;
+}
+
